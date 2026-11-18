@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; object-src 'none'; base-uri 'none'; form-action 'none'" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Interaktivní mobilní náhled DSO — Digitální Správa Objektů." />
+    <title>DSO · mobile UI preview</title>
+    <link rel="icon" href="./assets/app-icon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <script src="./app.js?v=106-preview-1" data-mobile-entry></script>
+    <link rel="stylesheet" href="./styles.css?v=106-preview-1" />
+  </head>
+  <body>
+    <main class="preview-shell">
+      <header class="preview-header">
+        <div class="preview-brand">
+          <img src="./assets/app-icon.svg" alt="" />
+          <div>
+            <span>DSO V104</span>
+            <strong>Digitální Správa Objektů · Android preview</strong>
+          </div>
+        </div>
+        <a href="./app/?v=106-preview-1" target="_blank" rel="noreferrer">Otevřít samostatně</a>
+      </header>
+      <div class="phone" aria-label="Interaktivní mobilní náhled DSO">
+        <iframe src="./app/?v=106-preview-1" title="DSO — Digitální Správa Objektů"></iframe>
+      </div>
+      <p class="preview-note">V104 · Ukázková data a ilustrační fotografie · Bez přístupu k telefonu a zákaznickým údajům · Změny se po obnovení stránky zruší.</p>
+    </main>
+  </body>
+</html>
