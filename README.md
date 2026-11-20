@@ -1,53 +1,41 @@
-# DSO — Digitální správa objektů
+# DSO · Digitální správa objektů
 
-Offline Android aplikace pro technické kontroly a správu objektů.
+[Otevřít interaktivní náhled](https://michalmachalik.github.io/DSO/)
 
-[Otevřít interaktivní ukázku DSO](https://michalmachalik.github.io/DSO/)
+DSO je zakázková offline aplikace pro technické kontroly objektů v Androidu. Tento repozitář obsahuje webový náhled rozhraní verze V104, jeho zdrojový kód a fiktivní záznamy. Zdrojový kód zakázkové aplikace je neveřejný.
 
-## Náhled Android rozhraní
+## Od kontroly k protokolu
 
-Základem náhledu je rozhraní Android verze V104. Náhled používá Roboto, Noto Serif, Material ikony a světlou i tmavou paletu z Android aplikace. Rámeček má logické rozlišení 411 × 914 bodů. Na menším zařízení se rozhraní přizpůsobí dostupné šířce.
+1. V části **Práce** vyhledejte objekt podle ulice nebo čísla a otevřete kontrolu.
+2. Zapište stav vybavení nebo odečet měřidla. K fotografiím lze přidat samostatné popisy. Rozpracovanou kontrolu lze uložit a později v ní pokračovat.
+3. Kontrolu můžete uzavřít i s nevyplněnými položkami. Po potvrzení a podpisu otevřete v historii protokol a stáhněte PDF nebo fotolist.
 
-- Přihlášení, hlavní nabídka, Práce, Rozpracované a Historie.
-- Nastavení v třech sloupcích, přehled kontroly s deseti navigačními dlaždicemi.
-- 9 výchozích kategorií a 54 kontrolních objektů; řazení, přesouvání, úpravy a koš.
-- Nové kontroly používají upravenou šablonu, rozpracovaná ukázka si drží vlastní otisk.
-- Vyhledávání od prvního znaku celé ulice nebo čísla, bez ohledu na diakritiku.
-- Automatické sbalení předchozí sekce a posun nové sekce nahoru.
-- Samostatné popisy fotografií, označení, zrušení neuložených úprav.
-- Měřidla s názvem, výrobním číslem a odečtem.
-- Uzavření neúplné kontroly po potvrzení a podpisu, prohlížení a stažení protokolu i fotolistu.
-- Upozornění s nastavitelnými časy, přepínači a seznamem restů.
-- Výběrové mazání protokolů i mazání od data s potvrzením.
-- Světlý a tmavý vzhled, dialogy a spodní navigace podle Androidu.
+## Jak náhled pracuje s daty
 
-## Hranice ukázky
+| Oblast | Chování |
+| --- | --- |
+| Šablony | Výchozí šablona má 9 kategorií a 54 kontrolních objektů. Nová kontrola použije aktuální šablonu. Rozpracovaná si uchová vlastní kopii. |
+| Uložení | Rozpracované a uzavřené kontroly, nastavení a vzhled se uchovávají v prohlížeči. Vymazání dat webu vrátí výchozí stav. |
+| Rozhraní | Světlé a tmavé téma, spodní navigace a přizpůsobení šířce displeje. Výchozí rámeček odpovídá 411 × 914 logickým bodům. |
+| Funkce zařízení | Přihlášení a upozornění mají názornou podobu. Oprávnění Androidu, systémový fotoaparát, notifikace a šifrované zálohy obsluhuje nativní aplikace. Web vytváří PDF ze zobrazených fiktivních údajů a podpisu. |
 
-Ukázka používá fiktivní záznamy a ilustrační fotografie. Rozpracované a uzavřené kontroly i preference vzhledu se ukládají v tomto prohlížeči. Vymazání dat webu obnoví výchozí ukázku.
+## Lokální spuštění a testy
 
-Heslová pole jsou součástí názorného přihlášení. Android aplikace zajišťuje systémová oprávnění, fotoaparát, správu účtů, skutečná upozornění, tisk a šifrované zálohy. Ukázka vytváří vlastní PDF se zobrazenými fiktivními údaji a podpisem.
-
-Webové vykreslení a systémové prvky se mohou nepatrně lišit podle rozlišení, systémového písma a jeho nastaveného zvětšení. Náhled používá výchozí měřítko písma.
-
-Repozitář neobsahuje produkční zdrojový kód, databáze, přístupové údaje ani instalační balíčky. Nezadávejte zákaznické nebo jiné soukromé údaje.
-
-## Spuštění a testy
-
-Spusťte server v Node.js 22 nebo novějším a otevřete `http://127.0.0.1:4174/`.
+Spusťte z kořene repozitáře v Node.js 22 nebo novějším. [Otevřít localhost](http://127.0.0.1:4174/)
 
 ```sh
 node scripts/serve-demo.mjs 4174
 ```
 
-Testy a sestavení spusťte v samostatném terminálu.
+V dalším terminálu lze ověřit datový model a sestavit balíček pro GitHub Pages.
 
 ```sh
 node --test tests/*.test.mjs
 node scripts/build-preview.mjs
 ```
 
-Server poslouchá pouze na lokální adrese. Balíček pro Pages vzniká do prázdného adresáře `_site/` a obsahuje jen veřejné runtime soubory. UI regresní scénáře v `e2e/` se ověřují v GitHub Actions v šířkách 320, 390 a 411 bodů. Zachycují také snímky obou barevných režimů.
+Sestavení vyžaduje prázdný nebo dosud nevytvořený adresář `_site/`. Obsahuje pouze soubory nutné k provozu náhledu. [Kód rozhraní a generování PDF](app/) · [Datové testy](tests/) · [Scénáře pro prohlížeč](e2e/)
 
 ## Licence
 
-Viz [LICENSE](LICENSE). Písma Roboto a Noto Serif a Material ikony mají vlastní licence přiložené v `assets/`.
+[Licence náhledu](LICENSE). Písma Roboto a Noto Serif a ikony Material mají vlastní licenční texty v [assets/](assets/).
